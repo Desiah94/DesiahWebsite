@@ -8,7 +8,7 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String(255), unique=True, nullable=False)
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
-    # Add any other fields you need for the User model
+    password_hash = db.Column(db.String(255), nullable=False)  # Field for storing password hash
 
 class Project(db.Model, SerializerMixin):
     serialize_rules = ('-user.projects', '-portfolios.projects')
