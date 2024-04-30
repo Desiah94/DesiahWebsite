@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import NavBar from './NavBar';
 import Home from './Home';
@@ -11,16 +11,15 @@ import UserProfile from './UserProfile';
 function App() {
   return (
     <Router>
-      <NavBar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/logout" component={Logout} />
-        <Route path="/profile" component={UserProfile} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/navbar" element={<NavBar />} />
+      </Routes>
     </Router>
   );
 }
-
 export default App;
