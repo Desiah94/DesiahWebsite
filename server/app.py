@@ -103,72 +103,13 @@ class OtherUsersProjects(Resource):
         projects = Project.query.filter(Project.user_id != user_id).all()
         # Serialize projects here using SerializerMixin
         return projects
-    
-# View all portfolios
-class Portfolios(Resource):
-    def get(self):
-        portfolios = Portfolio.query.all()
-        # Serialize portfolios here using SerializerMixin
-        return portfolios
-
-# View a specific portfolio
-class PortfolioDetails(Resource):
-    def get(self, portfolio_id):
-        portfolio = Portfolio.query.get(portfolio_id)
-        if portfolio:
-            # Serialize portfolio here using SerializerMixin
-            return portfolio
-        else:
-            return {'error': 'Portfolio not found'}, 404
-
-# Create a new portfolio
-class NewPortfolio(Resource):
-    def post(self):
-        data = request.json
-        new_portfolio = Portfolio(name=data['name'])
-        db.session.add(new_portfolio)
-        db.session.commit()
-        return {'message': 'Portfolio created successfully'}
-
-# Update a portfolio
-class UpdatePortfolio(Resource):
-    def put(self, portfolio_id):
-        data = request.json
-        portfolio = Portfolio.query.get(portfolio_id)
-        if portfolio:
-            portfolio.name = data['name']
-            db.session.commit()
-            return {'message': 'Portfolio updated successfully'}
-        else:
-            return {'error': 'Portfolio not found'}, 404
-
-# Delete a portfolio
-class DeletePortfolio(Resource):
-    def delete(self, portfolio_id):
-        portfolio = Portfolio.query.get(portfolio_id)
-        if portfolio:
-            db.session.delete(portfolio)
-            db.session.commit()
-            return {'message': 'Portfolio deleted successfully'}
-        else:
-            return {'error': 'Portfolio not found'}, 404
 
 # Define routes
-api.add_resource(Users, '/users')
-api.add_resource(UserDetails, '/users/<int:user_id>')
-api.add_resource(NewUser, '/users/new')
-api.add_resource(UpdateUser, '/users/<int:user_id>/update')
-api.add_resource(DeleteUser, '/users/<int:user_id>/delete')
 api.add_resource(Projects, '/projects')
 api.add_resource(NewProject, '/projects/new')
 api.add_resource(UpdateProject, '/projects/<int:project_id>/update')
 api.add_resource(DeleteProject, '/projects/<int:project_id>/delete')
 api.add_resource(OtherUsersProjects, '/users/<int:user_id>/projects')
-api.add_resource(Portfolios, '/portfolios')
-api.add_resource(PortfolioDetails, '/portfolios/<int:portfolio_id>')
-api.add_resource(NewPortfolio, '/portfolios/new')
-api.add_resource(UpdatePortfolio, '/portfolios/<int:portfolio_id>/update')
-api.add_resource(DeletePortfolio, '/portfolios/<int:portfolio_id>/delete')
 
 # Welcome message
 @app.route('/')
