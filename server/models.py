@@ -20,19 +20,13 @@ class Project(db.Model, SerializerMixin):
     github_link = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', backref=db.backref('projects', lazy=True))
-    # Add any other fields you need for the Project model
 
 class Portfolio(db.Model, SerializerMixin):
     serialize_rules = ('-users.portfolios', '-projects.portfolios')
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
-    # Add any other fields you need for the Portfolio model
-
-    # Define the many-to-many relationship with User
     users = db.relationship('User', secondary='user_portfolio', backref=db.backref('portfolios', lazy=True))
-
-    # Define the many-to-many relationship with Project
     projects = db.relationship('Project', secondary='project_portfolio', backref=db.backref('portfolios', lazy=True))
 
 # Association Table for many-to-many relationship between User and Portfolio

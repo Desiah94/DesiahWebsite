@@ -1,6 +1,4 @@
-// ProjectCard.js
 import React, { useState } from 'react';
-
 
 const ProjectCard = ({ project }) => {
   const [showModal, setShowModal] = useState(false);
@@ -16,7 +14,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="project-card">
       <h3>{project.title}</h3>
-      {/* Other project details */}
+      <p>{project.description}</p>
       <div className={`modal ${showModal ? 'show' : ''}`}>
         <div className="modal-content">
           <span className="close" onClick={handleCloseModal}>&times;</span>

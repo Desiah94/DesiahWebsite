@@ -1,4 +1,3 @@
-// ProjectList.js
 import React from 'react';
 import ProjectCard from './ProjectCard';
 
