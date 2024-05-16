@@ -1,7 +1,236 @@
 :root {
+  flex: 1;
   --bg: #282c34;
   --header: #fff;
   --link: #61dafb;
   --text: hsla(0, 0%, 100%, 0.88);
 }
+/* Set a minimum height for the content area */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
 
+/* navbar */
+.navbar {
+  padding: 1rem; /* Padding around navbar */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Use system font stack */
+}
+
+.navbar ul {
+  display: flex; /* Display links in a row */
+  justify-content: center; /* Center align links */
+  list-style: none; /* Remove default list styles */
+}
+
+.navbar li {
+  margin-right: 1rem; /* Add space between navbar items */
+}
+
+.navbar a {
+  color: #8e081c; /* Dark pink text color */
+  text-decoration: none; /* Remove underline from links */
+  padding: 0.5rem 1rem; /* Padding inside buttons */
+  border-radius: 0.25rem; /* Round corners of buttons */
+  background-color: transparent; /* Transparent background for buttons */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  font-size: 1.2rem; /* Font size */
+  font-weight: bold; /* Bold font weight */
+}
+
+.navbar a:hover {
+  background-color: #cc112d; /* Light pink background color on hover */
+  color: #fff; /* White text color on hover */
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: -50px; /* Adjust the gap between left and right containers */
+  margin-left: 40px;
+}
+.left,
+.right {
+  flex: 1;
+  text-align: center;
+}
+.left {
+  text-align: center;
+  margin-right: -85px; /* Adjust the negative margin to bring the containers closer */
+}
+.right {
+  max-width: 600px; /* Set a maximum width for the container */
+  max-height: 300px;
+  color: rgb(95, 1, 32);
+  font-size: .9rem;
+  flex: 1;
+  text-align: center;
+  margin-left: -100px; /* Adjust the negative margin to move the container closer */
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px; /* Make the container round */
+  box-shadow: 0 8px 16px rgba(153, 25, 46, 0.5); /* Light pink shadow */
+}
+
+
+.img-container:hover {
+  box-shadow: 0 15px 30px rgba(208, 83, 83, 0.9); /* Even more intense shadow on hover */
+}
+
+.img-container img {
+  width: 100%; /* Make the image fill the container */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+/* Responsive layout for tablets and small desktops */
+@media (min-width: 768px) {
+  .home-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 1024px) {
+  .home-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px;
+  }
+}
+
+/* home css  */
+.header {
+  color: rgb(87, 1, 1);
+  text-align: center;
+  font-size: 24px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  margin-left: -550px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  margin-top: -60px;
+}
+
+.icon-container img {
+  width: 80px; /* Set the width of each icon */
+  margin: 10px; /* Add some spacing around each icon */
+}.img-container {
+  width: 400px; /* Set the width of the image container to 100% */
+  height: 500px; /* Set the height of the image container */
+  border-radius: 20px; /* Make the image container round */
+  overflow: hidden; /* Hide overflowing content */
+  margin: 0 auto; /* Center the image container */
+  /* box-shadow: 0 10px 20px rgba(235, 58, 58, 0.8); Intense pink shadow */
+}
+/* ProjectCard.css */
+.project-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* ProjectList.css */
+.project-list {
+  margin-top: 20px;
+}
+
+.project-list h2 {
+  margin-top: 0;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+/* Project.css */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.projects h1 {
+  margin-top: 0;
+}
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px; /* Add some top margin to push it down */
+  margin-top: auto; /* Push the footer to the bottom */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 5px; /* Adjust the spacing between icons */
+}
+
+.social-icons img {
+  width: 30px; /* Set the width of the icons */
+  height: 30px; /* Set the height of the icons */
+}
+
+.social-icons a:hover {
+  color: #007bff; /* Change color on hover to blue */
+}
