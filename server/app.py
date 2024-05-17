@@ -8,6 +8,8 @@ class Projects(Resource):
     def get(self):
         projects = Project.query.all()
         serialized_projects = [self.project_to_dict(project) for project in projects]
+        app.logger.info(f"Fetched {len(serialized_projects)} projects")
+        app.logger.debug(f"Fetched projects: {serialized_projects}")
         return serialized_projects, 200
 
     def project_to_dict(self, project):

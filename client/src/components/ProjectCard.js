@@ -15,7 +15,9 @@ const ProjectCard = ({ project }) => {
     <div className="project-card">
       <h3>{project.title}</h3>
       <p>{project.description}</p>
-      <button onClick={handleCardClick}>Open Video</button>
+      <a href={project.github_link} target="_blank" rel="noopener noreferrer" className="github-link">Github Repo</a>
+      <button onClick={handleCardClick} className="open-video-button">Open Video</button>
+
       {showModal && (
         <div className="custom-modal-overlay">
           <div className="custom-modal">

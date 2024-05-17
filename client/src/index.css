@@ -106,7 +106,7 @@ body {
 
 /* home css  */
 .header {
-  color: rgb(87, 1, 1);
+  color: #560101;
   text-align: center;
   font-size: 24px;
   margin-top: 60px;
@@ -133,76 +133,7 @@ body {
   margin: 0 auto; /* Center the image container */
   /* box-shadow: 0 10px 20px rgba(235, 58, 58, 0.8); Intense pink shadow */
 }
-/* ProjectCard.css */
-.project-card {
-  border: 1px solid #ccc;
-  border-radius: 20px; /* Make the card round */
-  padding: 10px;
-  margin-bottom: 20px; /* Increase margin between cards */
-  display: flex; /* Use flexbox for vertical alignment */
-  flex-direction: column; /* Stack items vertically */
-}
 
-.project-card h3 {
-  margin-top: 0;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-/* ProjectList.css */
-.project-list {
-  margin-top: 20px;
-}
-
-.project-list h2 {
-  margin-top: 0;
-}
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 20px;
-}
-/* Project.css */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 20px;
-}
-
-.projects h1 {
-  margin-top: 0;
-}
 footer {
   background-color: #333;
   color: white;
@@ -235,7 +166,114 @@ footer {
 .social-icons a:hover {
   color: #007bff; /* Change color on hover to blue */
 }
-/* ProjectCard.css */
+
+.project-card {
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Make the card round */
+  padding: 10px 15px; /* Adjust padding for a shorter card */
+  margin-bottom: 10px; /* Decrease margin between cards */
+  display: flex; /* Use flexbox for vertical alignment */
+  flex-direction: column; /* Stack items vertically */
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  box-shadow: 0 4px 8px #901717; /* Light red shadow */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
+
+}
+@media (min-width: 768px) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
+  }
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 16px #961b1b; /* Intense red shadow on hover */
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 5px; /* Reduce space between title and content */
+  color: #d31616; /* Red color for headers */
+  text-align: center;
+}
+
+.project-card p {
+  
+  margin: 0 auto; /* Center the cards on the page */
+ 
+  
+  color: #333; /* Darken the text color for better readability */
+  text-align: center; /* Left-align the text for a more traditional reading flow */
+  font-size: 16px; /* Adjust the font size for better readability */
+  line-height: 1.5; /* Increase the line height for better spacing between lines */
+}
+
+.project-card ul {
+  margin-top: 10px; /* Add some space above the list */
+  padding-left: 20px; /* Indent the list items */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #ffffff; /* White background */
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 20px;
+  width: 80%;
+}
+
+.close {
+  color: #ff0000; /* Red color for close button */
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+.project-list {
+  margin-top: 20px;
+}
+
+.project-list h2 {
+  margin-top: 0;
+  color: #ff0000; /* Red color for section headers */
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-gap: 20px; 
+}
+
+.projects h1 {
+  margin-top: 0;
+  color: #ff0000; /* Red color for main headers */
+}
+
+/* Custom Modal Styles */
 .custom-modal-overlay {
   position: fixed;
   top: 0;
@@ -265,9 +303,43 @@ footer {
   right: 10px;
   cursor: pointer;
   font-size: 24px;
-  color: black;
+  color: #ff0000; /* Red color for close button */
 }
 
 video {
   width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
+}
+.github-link {
+  display: block; /* Display as block to take full width */
+  margin-top: 10px; /* Add some space between the description and the link */
+  color: #ff0000; /* GitHub link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Bold font weight */
+  text-align: center;
+}
+
+.github-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+.open-video-button {
+  padding: 5px 10px; /* Adjust padding to make the button shorter */
+  font-size: 14px; 
+  width: 100px;
+  margin-left: 245px;
+  margin-top: 10px;
+  color: white; /* Dark pink text color */
+  background-color: #8e081c; /* Dark pink background color on hover */ /* Transparent background for buttons */
+  border: 1px solid #8e081c; /* Dark pink border */
+  border-radius: 0.25rem; /* Round corners of buttons */
+  padding: 0.5rem 1rem; /* Padding inside buttons */
+  /* font-size: 1.2rem; Font size */
+  font-weight: bold; /* Bold font weight */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.open-video-button:hover {
+  background-color: white; /* Light pink background color on hover */
+  color: #8e081c; /* White text color on hover */
 }

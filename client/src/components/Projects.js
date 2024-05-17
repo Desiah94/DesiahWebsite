@@ -29,7 +29,7 @@ function Projects() {
 
   return (
     <div>
-      <h1>Projects</h1>
+      {/* <h1>Latest Work</h1> */}
       {error && <p>{error}</p>}
       <ProjectList projects={projects} />
     </div>
