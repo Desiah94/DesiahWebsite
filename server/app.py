@@ -14,7 +14,7 @@ class Projects(Resource):
         return {
             'id': project.id,
             'title': project.title,
-            'demo_video': project.demo_video,
+            'loom_embed_url': project.loom_embed_url,
             'description': project.description,
             'github_link': project.github_link,
             'user_id': project.user_id

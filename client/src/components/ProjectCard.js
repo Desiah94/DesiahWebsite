@@ -15,16 +15,22 @@ const ProjectCard = ({ project }) => {
     <div className="project-card">
       <h3>{project.title}</h3>
       <p>{project.description}</p>
-      <div className={`modal ${showModal ? 'show' : ''}`}>
-        <div className="modal-content">
-          <span className="close" onClick={handleCloseModal}>&times;</span>
-          <video controls>
-            <source src={project.demo_video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
       <button onClick={handleCardClick}>Open Video</button>
+      {showModal && (
+        <div className="custom-modal-overlay">
+          <div className="custom-modal">
+            <span className="custom-close" onClick={handleCloseModal}>&times;</span>
+            <iframe
+              title={project.title}
+              width="560"
+              height="315"
+              src={project.loom_embed_url}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

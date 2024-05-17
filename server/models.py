@@ -15,7 +15,7 @@ class Project(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
-    demo_video = db.Column(db.String(255), nullable=False)
+    loom_embed_url = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
     github_link = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
