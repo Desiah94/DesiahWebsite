@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 from config import app, db, api
 from models import User, Project, Portfolio
 
+
 class Projects(Resource):
     def get(self):
         projects = Project.query.all()

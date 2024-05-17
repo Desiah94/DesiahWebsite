@@ -3,6 +3,7 @@ import ProjectList from './ProjectList';
 
 function Projects() {
   const [projects, setProjects] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchProjects();
@@ -12,22 +13,24 @@ function Projects() {
     fetch("http://localhost:5555/projects")
       .then(response => {
         if (!response.ok) {
-          throw new Error(`Failed to fetch projects: ${response.status} ${response.statusText}`);
+          throw new Error("Failed to fetch projects");
         }
-        console.log(projects)
         return response.json();
       })
       .then(data => {
         setProjects(data);
+        setError(null);
       })
       .catch(error => {
         console.error("Error fetching projects:", error);
+        setError("Failed to fetch projects");
       });
   };
 
   return (
     <div>
       <h1>Projects</h1>
+      {error && <p>{error}</p>}
       <ProjectList projects={projects} />
     </div>
   );

@@ -136,9 +136,11 @@ body {
 /* ProjectCard.css */
 .project-card {
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 20px; /* Make the card round */
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Increase margin between cards */
+  display: flex; /* Use flexbox for vertical alignment */
+  flex-direction: column; /* Stack items vertically */
 }
 
 .project-card h3 {
@@ -171,7 +173,6 @@ body {
   font-size: 28px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: black;
