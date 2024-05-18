@@ -6,12 +6,8 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 /* Set a minimum height for the content area */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-}
+
+
 
 /* navbar */
 .navbar {
@@ -47,14 +43,14 @@ body {
 
 .home-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Single column layout */
   grid-gap: 20px;
   padding: 20px;
   justify-content: center;
   align-items: center;
-  gap: -50px; /* Adjust the gap between left and right containers */
-  margin-left: 40px;
+  margin-left: 0px;
 }
+
 .left,
 .right {
   flex: 1;
@@ -65,19 +61,20 @@ body {
   margin-right: -85px; /* Adjust the negative margin to bring the containers closer */
 }
 .right {
-  max-width: 600px; /* Set a maximum width for the container */
+  max-width: 600px;
   max-height: 300px;
   color: rgb(95, 1, 32);
   font-size: .9rem;
   flex: 1;
   text-align: center;
-  margin-left: -100px; /* Adjust the negative margin to move the container closer */
+  margin-left: -100px;
   text-align: center;
   background-color: #fff;
   padding: 20px;
-  border-radius: 20px; /* Make the container round */
-  box-shadow: 0 8px 16px rgba(153, 25, 46, 0.5); /* Light pink shadow */
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(153, 25, 46, 0.5);
 }
+
 
 
 .img-container:hover {
@@ -120,6 +117,8 @@ body {
   align-items: center; /* Center items vertically */
   flex-wrap: wrap; /* Allow items to wrap to the next line */
   margin-top: -60px;
+
+
 }
 
 .icon-container img {
@@ -134,38 +133,44 @@ body {
   /* box-shadow: 0 10px 20px rgba(235, 58, 58, 0.8); Intense pink shadow */
 }
 
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: fixed;
+
+/* Footer.css */
+
+/* Footer.css */
+
+.footer {
+  margin-left:-20px;
+  height: 100px;
+  margin-bottom: -100px;
   left: 0;
-  bottom: 0;
-  width: 100%;
-  margin-bottom: 0px; /* Add some top margin to push it down */
-  margin-top: auto; /* Push the footer to the bottom */
+  width: 1275px;
+  background-color:#560101;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
 }
 
+.copyright {
+  margin-top: 70px;
+}
 .social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 10px;
 }
 
 .social-icons a {
   display: inline-block;
-  margin: 0 5px; /* Adjust the spacing between icons */
+  margin-right: 10px;
+  color: #fff;
 }
 
 .social-icons img {
-  width: 30px; /* Set the width of the icons */
-  height: 30px; /* Set the height of the icons */
+  width: 30px;
+  height: 30px;
+  margin-bottom: -60px;
 }
 
-.social-icons a:hover {
-  color: #007bff; /* Change color on hover to blue */
-}
+
+
 
 .project-card {
   border: 1px solid #ccc;
@@ -260,7 +265,7 @@ footer {
 }
 
 .projects {
-  display: grid;
+  
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 20px;
   display: grid;
@@ -342,4 +347,36 @@ video {
 .open-video-button:hover {
   background-color: white; /* Light pink background color on hover */
   color: #8e081c; /* White text color on hover */
+}
+/* Resume.css */
+.resume-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.resume-header {
+  color: #8e0813; /* Dark text color */
+  font-size: 24px; /* Larger font size */
+  margin-bottom: 20px; /* Add some space below the header */
+}
+
+.resume-image {
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  border-radius: 10px; /* Rounded corners for the image */
+  margin-bottom: 20px; /* Add some space below the image */
+}
+
+.resume-button {
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 16px; /* Font size */
+  background-color:#8e081c; /* Blue background color */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.resume-button:hover {
+  background-color: #e41130; /* Light pink background color on hover */
+  color:white; /* White text color on hover */
 }
