@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Message = require('./models/Message');  // Import the Mongoose model
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;  // Use Heroku's PORT if available, fallback to 3000 for local
 
 // Use CORS middleware
 app.use(cors());
@@ -16,10 +16,8 @@ app.use(express.json());
 // Serve static files
 app.use(express.static(path.join(__dirname, 'portfolio-responsive-complete')));
 
-// MongoDB connection URI (local or MongoDB Atlas URI)
-const mongoURI = 'mongodb://localhost:27017/contact-form';  // Use MongoDB URI
-// For MongoDB Atlas, use the connection string from your Atlas dashboard
-// const mongoURI = 'your-atlas-uri';
+// MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/contact-form';  // Local fallback
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
