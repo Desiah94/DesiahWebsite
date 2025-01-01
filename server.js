@@ -19,7 +19,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'portfolio-responsive-complete')));
 
 // MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
-const mongoURI = process.env.MONGO_URI || `mongodb+srv://desiahbarnett:${process.env.MONGO_PASSWORD}@cluster0.tsucj.mongodb.net/contact-form?retryWrites=true&w=majority`;
+const mongoURI = process.env.DB_URI || `mongodb+srv://desiahbarnett:${process.env.DB_PASSWORD}@cluster0.tsucj.mongodb.net/contact-form?retryWrites=true&w=majority`;
+
 
 // Connect to MongoDB
 mongoose.connect(mongoURI)
