@@ -7,6 +7,7 @@ const Message = require('./models/Message');  // Import the Mongoose model
 const app = express();
 const port = process.env.PORT || 3000;  // Use Heroku's PORT or fallback to 3000
 
+
 // Use CORS middleware
 app.use(cors());
 
