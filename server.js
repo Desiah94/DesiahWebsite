@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json());
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '..', 'portfolio-responsive-complete')));
+app.use(express.static(path.join(__dirname, '.', 'portfolio-responsive-complete')));
 
 
 // MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
