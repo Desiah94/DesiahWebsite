@@ -55,7 +55,8 @@ app.get('/', (req, res) => {
 });
 
 
-// Start the server
+// Start the server on the port provided by Heroku, or fallback to 3000 for local development
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);
 });
