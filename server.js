@@ -20,6 +20,7 @@ app.use(express.json());
 // Serve static files
 app.use(express.static(path.join(__dirname, '..', 'portfolio-responsive-complete')));
 
+
 // MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://desiahbarnett:cora1951@cluster0.tsucj.mongodb.net/contact-form?retryWrites=true&w=majority';
 
