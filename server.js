@@ -8,7 +8,12 @@ const Message = require('/models/Message');  // Import the Mongoose model
 const app = express();
 
 // Use CORS middleware
-app.use(cors());
+app.use(cors({
+    origin: '*',  // Allows all domains. You may change this to only allow certain domains if needed.
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow specific HTTP methods.
+    allowedHeaders: ['Content-Type'],  // Allow specific headers.
+}));
+
 
 // Parse JSON request bodies
 app.use(express.json());
