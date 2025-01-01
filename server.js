@@ -7,10 +7,10 @@ const Message = require('./models/Message');  // Import the Mongoose model
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Allow CORS for specific origins
+// Allow CORS for specific origins (localhost for local dev and your Heroku domain)
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://desiah-personal-portfolio-fb9e3bf2047b.herokuapp.com'], // Allow localhost and your Heroku domain
-    methods: ['GET', 'POST'],
+    origin: ['http://localhost:3000', 'https://your-heroku-app.herokuapp.com'],
+    methods: ['GET', 'POST', 'OPTIONS'],  // Allow OPTIONS method
     credentials: true
 };
 
@@ -58,4 +58,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
-
