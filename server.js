@@ -5,21 +5,23 @@ const mongoose = require('mongoose');
 const Message = require('./models/Message');  // Import the Mongoose model
 
 const app = express();
-const port = process.env.PORT || 3000;  // Use Heroku's PORT or fallback to 3000
+const port = process.env.PORT || 3000;
 
+// Allow CORS for specific origins
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://desiah-personal-portfolio-fb9e3bf2047b.herokuapp.com'], // Allow localhost and your Heroku domain
+    methods: ['GET', 'POST'],
+    credentials: true
+};
 
-// Use CORS middleware
-app.use(cors({
-    origin: '*',  // Allow all domains, or set it to the domain of your frontend
-}));
-
+// Use CORS middleware with the specified options
+app.use(cors(corsOptions));
 
 // Parse JSON request bodies
 app.use(express.json());
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '.', 'portfolio-responsive-complete')));
-
+app.use(express.static(path.join(__dirname, '..', 'portfolio-responsive-complete')));
 
 // MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://desiahbarnett:cora1951@cluster0.tsucj.mongodb.net/contact-form?retryWrites=true&w=majority';
@@ -33,19 +35,13 @@ mongoose.connect(mongoURI)
 app.post('/api/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
-    // Ensure all fields are provided
     if (!name || !email || !message) {
         return res.status(400).json({ error: 'All fields are required.' });
     }
 
     try {
-        // Create a new Message instance
         const newMessage = new Message({ name, email, message });
-
-        // Save the message to MongoDB
-        await newMessage.save();  // Save to DB
-
-        // Send a success response
+        await newMessage.save();
         res.status(200).json({ success: 'Message received successfully!' });
     } catch (error) {
         console.error('Error saving message:', error);
@@ -55,10 +51,11 @@ app.post('/api/contact', async (req, res) => {
 
 // Serve the index.html file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'portfolio-responsive-complete', 'index.html'));  // Adjusted path
+    res.sendFile(path.join(__dirname, '..', 'portfolio-responsive-complete', 'index.html'));
 });
 
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
