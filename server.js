@@ -24,13 +24,15 @@ const mongoURI = process.env.MONGO_URI || 'mongodb+srv://desiahbarnett:cora1951@
 
 // Connect to MongoDB
 mongoose.connect(mongoURI)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch((err) => console.error('Error connecting to MongoDB:', err));
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Error connecting to MongoDB:', err));
+
 
 // Handle contact form submission
 app.post('/api/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
+    // Ensure all fields are provided
     if (!name || !email || !message) {
         return res.status(400).json({ error: 'All fields are required.' });
     }
@@ -40,8 +42,9 @@ app.post('/api/contact', async (req, res) => {
         const newMessage = new Message({ name, email, message });
 
         // Save the message to MongoDB
-        await newMessage.save();
+        await newMessage.save();  // Save to DB
 
+        // Send a success response
         res.status(200).json({ success: 'Message received successfully!' });
     } catch (error) {
         console.error('Error saving message:', error);
