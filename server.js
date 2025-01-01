@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-const Message = require('./models/Message');  // Import the Mongoose model
+const Message = require('../models/Message');  // Import the Mongoose model
 
 const app = express();
 const port = process.env.PORT || 3000;  // Use Heroku's PORT or fallback to 3000
@@ -14,7 +14,8 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'portfolio-responsive-complete')));
+app.use(express.static(path.join(__dirname, '..', 'portfolio-responsive')));
+
 
 
 
