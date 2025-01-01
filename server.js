@@ -1,27 +1,23 @@
-// Import dependencies
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-const Message = require('/models/Message');  // Import the Mongoose model
+const Message = require('./models/Message');  // Import the Mongoose model
 
 const app = express();
+const port = process.env.PORT || 3000;  // Use Heroku's PORT or fallback to 3000
+
 
 // Use CORS middleware
-app.use(cors({
-    origin: '*',  // Allows all domains. You may change this to only allow certain domains if needed.
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow specific HTTP methods.
-    allowedHeaders: ['Content-Type'],  // Allow specific headers.
-}));
-
+app.use(cors());
 
 // Parse JSON request bodies
 app.use(express.json());
 
-// Serve static files (adjust this based on your folder structure)
+// Serve static files
 app.use(express.static(path.join(__dirname, '..', 'portfolio-responsive-complete')));
 
-// MongoDB connection URI (use environment variable for Heroku)
+// MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://desiahbarnett:cora1951@cluster0.tsucj.mongodb.net/contact-form?retryWrites=true&w=majority';
 
 // Connect to MongoDB
@@ -29,7 +25,7 @@ mongoose.connect(mongoURI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
 
-// Handle contact form submission (POST request)
+// Handle contact form submission
 app.post('/api/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
@@ -39,9 +35,11 @@ app.post('/api/contact', async (req, res) => {
     }
 
     try {
-        // Create a new Message instance and save to MongoDB
+        // Create a new Message instance
         const newMessage = new Message({ name, email, message });
-        await newMessage.save();
+
+        // Save the message to MongoDB
+        await newMessage.save();  // Save to DB
 
         // Send a success response
         res.status(200).json({ success: 'Message received successfully!' });
@@ -53,11 +51,10 @@ app.post('/api/contact', async (req, res) => {
 
 // Serve the index.html file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'portfolio-responsive-complete', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'portfolio-responsive-complete', 'index.html'));  // Adjusted path
 });
 
-// Start the server, listen on the port from environment variable (for Heroku) or fallback to 3000 (for local dev)
-const port = process.env.PORT || 3000;  // Heroku assigns a port number dynamically
+// Start the server
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);  // Log the port to the console
+    console.log(`Server is running on http://localhost:${port}`);
 });
