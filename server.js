@@ -16,9 +16,6 @@ app.use(express.json());
 // Serve static files
 app.use(express.static(path.join(__dirname, '..', 'portfolio-responsive-complete')));
 
-
-
-
 // MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://desiahbarnett:cora1951@cluster0.tsucj.mongodb.net/contact-form?retryWrites=true&w=majority';
 
@@ -26,7 +23,6 @@ const mongoURI = process.env.MONGO_URI || 'mongodb+srv://desiahbarnett:cora1951@
 mongoose.connect(mongoURI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
-
 
 // Handle contact form submission
 app.post('/api/contact', async (req, res) => {
@@ -54,7 +50,7 @@ app.post('/api/contact', async (req, res) => {
 
 // Serve the index.html file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'portfolio-responsive-complete', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'portfolio-responsive-complete', 'index.html'));  // Adjusted path
 });
 
 // Start the server
