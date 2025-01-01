@@ -9,7 +9,10 @@ const port = process.env.PORT || 3000;  // Use Heroku's PORT or fallback to 3000
 
 
 // Use CORS middleware
-app.use(cors());
+app.use(cors({
+    origin: '*',  // Allow all domains, or set it to the domain of your frontend
+}));
+
 
 // Parse JSON request bodies
 app.use(express.json());
