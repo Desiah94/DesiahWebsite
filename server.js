@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Message = require('./models/Message');  // Import the Mongoose model
 
 const app = express();
-const PORT = process.env.PORT || 3000;  // Use Heroku's PORT if available, fallback to 3000 for local
+const port = process.env.PORT || 3000;  // Use Heroku's PORT or fallback to 3000
 
 // Use CORS middleware
 app.use(cors());
@@ -14,13 +14,13 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'portfolio-responsive-complete')));
+app.use(express.static(path.join(__dirname, '..', 'portfolio-responsive-complete')));
 
 // MongoDB connection URI (use environment variable for Heroku, fallback to local MongoDB if not set)
-const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/contact-form';  // Local fallback
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://desiahbarnett:cora1951@cluster0.tsucj.mongodb.net/contact-form?retryWrites=true&w=majority';
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI)
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.error('Error connecting to MongoDB:', err));
 
@@ -52,6 +52,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
